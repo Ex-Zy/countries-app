@@ -2,9 +2,28 @@ import { useState } from 'react'
 import reactLogo from './assets/react.svg'
 import viteLogo from '/vite.svg'
 import './App.css'
+import {useQuery} from "@apollo/client";
+import {gql} from "./__generated__";
+
+const COUNTRY_QUERY = gql(`
+    query GetCountry {
+        country(code: "UA") {
+            code
+            name
+            capital
+        }
+    }
+`);
 
 function App() {
   const [count, setCount] = useState(0)
+
+  const {loading,data, error} = useQuery(COUNTRY_QUERY);
+
+  if(loading) return <p>Loading...</p>
+  if(error) return <p>Error...</p>
+
+  console.log(data, error)
 
   return (
     <>
