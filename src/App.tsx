@@ -3,7 +3,7 @@ import reactLogo from './assets/react.svg'
 import viteLogo from '/vite.svg'
 import './App.css'
 import { useQuery } from '@apollo/client'
-import { gql } from './__generated__'
+import { gql } from './gql'
 
 const COUNTRY_QUERY = gql(`
     query GetCountry {
