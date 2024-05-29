@@ -1,6 +1,6 @@
-import './App.css'
+import './App.scss'
 
-import { Countries } from './components/Countries/Countries.tsx'
+import { Countries } from '../Countries/Countries.tsx'
 
 function App() {
   return (
