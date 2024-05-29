@@ -133,39 +133,119 @@ export type Subdivision = {
   name: Scalars['String']['output'];
 };
 
-export type GetCountryQueryVariables = Exact<{ [key: string]: never; }>;
+export type GetCountriesQueryVariables = Exact<{
+  filter?: InputMaybe<CountryFilterInput>;
+}>;
 
 
-export type GetCountryQuery = {
+export type GetCountriesQuery = {
   __typename?: 'Query',
-  country?: { __typename?: 'Country', code: string, name: string, capital?: string | null } | null
+  countries: Array<{
+    __typename?: 'Country',
+    name: string,
+    emoji: string,
+    capital?: string | null,
+    continent: { __typename?: 'Continent', code: string }
+  }>
+};
+
+export type GetSearchCountriesQueryVariables = Exact<{ [key: string]: never; }>;
+
+
+export type GetSearchCountriesQuery = {
+  __typename?: 'Query',
+  countries: Array<{ __typename?: 'Country', name: string, code: string }>
+};
+
+export type GetFilterBarContinentsQueryVariables = Exact<{ [key: string]: never; }>;
+
+
+export type GetFilterBarContinentsQuery = {
+  __typename?: 'Query',
+  continents: Array<{ __typename?: 'Continent', name: string, code: string }>
 };
 
 
-export const GetCountryDocument = {
+export const GetCountriesDocument = {
   "kind": "Document",
   "definitions": [{
     "kind": "OperationDefinition",
     "operation": "query",
-    "name": {"kind": "Name", "value": "GetCountry"},
+    "name": {"kind": "Name", "value": "GetCountries"},
+    "variableDefinitions": [{
+      "kind": "VariableDefinition",
+      "variable": {"kind": "Variable", "name": {"kind": "Name", "value": "filter"}},
+      "type": {"kind": "NamedType", "name": {"kind": "Name", "value": "CountryFilterInput"}}
+    }],
     "selectionSet": {
       "kind": "SelectionSet",
       "selections": [{
         "kind": "Field",
-        "name": {"kind": "Name", "value": "country"},
+        "name": {"kind": "Name", "value": "countries"},
         "arguments": [{
           "kind": "Argument",
-          "name": {"kind": "Name", "value": "code"},
-          "value": {"kind": "StringValue", "value": "UA", "block": false}
+          "name": {"kind": "Name", "value": "filter"},
+          "value": {"kind": "Variable", "name": {"kind": "Name", "value": "filter"}}
         }],
         "selectionSet": {
           "kind": "SelectionSet",
-          "selections": [{"kind": "Field", "name": {"kind": "Name", "value": "code"}}, {
+          "selections": [{"kind": "Field", "name": {"kind": "Name", "value": "name"}}, {
             "kind": "Field",
-            "name": {"kind": "Name", "value": "name"}
-          }, {"kind": "Field", "name": {"kind": "Name", "value": "capital"}}]
+            "name": {"kind": "Name", "value": "emoji"}
+          }, {"kind": "Field", "name": {"kind": "Name", "value": "capital"}}, {
+            "kind": "Field",
+            "name": {"kind": "Name", "value": "continent"},
+            "selectionSet": {
+              "kind": "SelectionSet",
+              "selections": [{"kind": "Field", "name": {"kind": "Name", "value": "code"}}]
+            }
+          }]
         }
       }]
     }
   }]
-} as unknown as DocumentNode<GetCountryQuery, GetCountryQueryVariables>;
+} as unknown as DocumentNode<GetCountriesQuery, GetCountriesQueryVariables>;
+export const GetSearchCountriesDocument = {
+  "kind": "Document",
+  "definitions": [{
+    "kind": "OperationDefinition",
+    "operation": "query",
+    "name": {"kind": "Name", "value": "GetSearchCountries"},
+    "selectionSet": {
+      "kind": "SelectionSet",
+      "selections": [{
+        "kind": "Field",
+        "name": {"kind": "Name", "value": "countries"},
+        "selectionSet": {
+          "kind": "SelectionSet",
+          "selections": [{"kind": "Field", "name": {"kind": "Name", "value": "name"}}, {
+            "kind": "Field",
+            "name": {"kind": "Name", "value": "code"}
+          }]
+        }
+      }]
+    }
+  }]
+} as unknown as DocumentNode<GetSearchCountriesQuery, GetSearchCountriesQueryVariables>;
+export const GetFilterBarContinentsDocument = {
+  "kind": "Document",
+  "definitions": [{
+    "kind": "OperationDefinition",
+    "operation": "query",
+    "name": {"kind": "Name", "value": "GetFilterBarContinents"},
+    "selectionSet": {
+      "kind": "SelectionSet",
+      "selections": [{
+        "kind": "Field",
+        "name": {"kind": "Name", "value": "continents"},
+        "selectionSet": {
+          "kind": "SelectionSet",
+          "selections": [{"kind": "Field", "name": {"kind": "Name", "value": "name"}}, {
+            "kind": "Field",
+            "name": {"kind": "Name", "value": "code"}
+          }]
+        }
+      }]
+    }
+  }]
+} as unknown as DocumentNode<GetFilterBarContinentsQuery, GetFilterBarContinentsQueryVariables>;
