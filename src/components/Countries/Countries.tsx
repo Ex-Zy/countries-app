@@ -1,3 +1,5 @@
+import './Countries.scss'
+
 import { FilterBar } from '../FilterBar/FilterBar.tsx'
 import { CountryList } from '../CountryList/CountryList.tsx'
 import React from 'react'
@@ -19,9 +21,11 @@ export const Countries = () => {
   }
 
   return (
-    <div>
-      <FilterBar onSubmit={handleApplyFilter} />
-      <CountryList filter={countryFilter} />
+    <div className="countries">
+      <div className="container">
+        <FilterBar onSubmit={handleApplyFilter} />
+        <CountryList filter={countryFilter} />
+      </div>
     </div>
   )
 }

@@ -145,7 +145,8 @@ export type GetCountriesQuery = {
     name: string,
     emoji: string,
     capital?: string | null,
-    continent: { __typename?: 'Continent', code: string }
+    code: string,
+    continent: { __typename?: 'Continent', name: string }
   }>
 };
 
@@ -167,8 +168,7 @@ export type GetFilterBarContinentsQuery = {
 
 
 export const GetCountriesDocument = {
-  "kind": "Document",
-  "definitions": [{
+  "kind": "Document", "definitions": [{
     "kind": "OperationDefinition",
     "operation": "query",
     "name": {"kind": "Name", "value": "GetCountries"},
@@ -194,10 +194,13 @@ export const GetCountriesDocument = {
             "name": {"kind": "Name", "value": "emoji"}
           }, {"kind": "Field", "name": {"kind": "Name", "value": "capital"}}, {
             "kind": "Field",
+            "name": {"kind": "Name", "value": "code"}
+          }, {
+            "kind": "Field",
             "name": {"kind": "Name", "value": "continent"},
             "selectionSet": {
               "kind": "SelectionSet",
-              "selections": [{"kind": "Field", "name": {"kind": "Name", "value": "code"}}]
+              "selections": [{"kind": "Field", "name": {"kind": "Name", "value": "name"}}]
             }
           }]
         }

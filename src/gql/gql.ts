@@ -13,7 +13,7 @@ import {TypedDocumentNode as DocumentNode} from '@graphql-typed-document-node/co
  * Therefore it is highly recommended to use the babel or swc plugin for production.
  */
 const documents = {
-  "\n  query GetCountries($filter: CountryFilterInput) {\n    countries(filter: $filter) {\n      name\n      emoji\n      capital\n      continent {\n        code\n      }\n    }\n  }\n": types.GetCountriesDocument,
+  "\n  query GetCountries($filter: CountryFilterInput) {\n    countries(filter: $filter) {\n      name\n      emoji\n      capital\n      code\n      continent {\n        name\n      }\n    }\n  }\n": types.GetCountriesDocument,
   "\n  query GetSearchCountries {\n    countries {\n      name\n      code\n    }\n  }\n": types.GetSearchCountriesDocument,
   "\n  query GetFilterBarContinents {\n    continents {\n      name\n      code\n    }\n  }\n": types.GetFilterBarContinentsDocument,
 };
@@ -35,7 +35,7 @@ export function gql(source: string): unknown;
 /**
  * The gql function is used to parse GraphQL queries into a document that can be used by GraphQL clients.
  */
-export function gql(source: "\n  query GetCountries($filter: CountryFilterInput) {\n    countries(filter: $filter) {\n      name\n      emoji\n      capital\n      continent {\n        code\n      }\n    }\n  }\n"): (typeof documents)["\n  query GetCountries($filter: CountryFilterInput) {\n    countries(filter: $filter) {\n      name\n      emoji\n      capital\n      continent {\n        code\n      }\n    }\n  }\n"];
+export function gql(source: "\n  query GetCountries($filter: CountryFilterInput) {\n    countries(filter: $filter) {\n      name\n      emoji\n      capital\n      code\n      continent {\n        name\n      }\n    }\n  }\n"): (typeof documents)["\n  query GetCountries($filter: CountryFilterInput) {\n    countries(filter: $filter) {\n      name\n      emoji\n      capital\n      code\n      continent {\n        name\n      }\n    }\n  }\n"];
 /**
  * The gql function is used to parse GraphQL queries into a document that can be used by GraphQL clients.
  */
