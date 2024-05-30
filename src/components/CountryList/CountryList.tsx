@@ -37,9 +37,12 @@ export const CountryList: React.FC<Props> = ({ filter }: Props) => {
     return <div className="country-list-error">Error: {error.message}</div>
   }
 
+  if (!data?.countries.length) {
+    return <div className="country-list-empty">No data</div>
+  }
+
   return (
     <>
-      <p>{data?.countries.length}</p>
       <ul className="country-list">
         {data?.countries.map((country) => {
           return (

@@ -1,30 +1,17 @@
 import { CountryFilterParams } from './types.ts'
 import { CountryFilterInput } from './gql/graphql.ts'
-import React from 'react'
 
-export const mapFormEventToFilterParams = (event: React.FormEvent<HTMLFormElement>): CountryFilterParams => {
-  const { country, continents } = event.currentTarget.elements as HTMLFormControlsCollection & {
-    country: HTMLInputElement
-    continents: HTMLSelectElement
-  }
-
-  return {
-    countryCode: country.value,
-    continentCode: continents.value,
-  }
-}
-
-export const mapFilterParamsToCountryFilter = (filterParams: CountryFilterParams): CountryFilterInput => {
+export const mapToCountryFilter = (formFilter: CountryFilterParams): CountryFilterInput => {
   const filter: CountryFilterInput = {}
 
-  if (filterParams.countryCode) {
+  if (formFilter.countryCode) {
     filter.code = {
-      eq: filterParams.countryCode,
+      eq: formFilter.countryCode,
     }
   }
-  if (filterParams.continentCode) {
+  if (formFilter.continentCode) {
     filter.continent = {
-      eq: filterParams.continentCode,
+      eq: formFilter.continentCode,
     }
   }
   return filter

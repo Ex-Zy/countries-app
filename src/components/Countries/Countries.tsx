@@ -2,19 +2,14 @@ import './Countries.scss'
 
 import { FilterBar } from '../FilterBar/FilterBar.tsx'
 import { CountryList } from '../CountryList/CountryList.tsx'
-import React from 'react'
 import { useCountryFilter } from '../../hooks/useCountryFilter.ts'
-import { mapFormEventToFilterParams } from '../../utils.ts'
+import { CountryFilterParams } from '../../types.ts'
 
 export const Countries = () => {
-  const { countryFilter, updateFilterParams } = useCountryFilter()
+  const { formFilterState, countryFilter, updateFormFilterState } = useCountryFilter()
 
-  function handleApplyFilter(event: React.FormEvent<HTMLFormElement>) {
-    event.preventDefault()
-
-    const { countryCode, continentCode } = mapFormEventToFilterParams(event)
-
-    updateFilterParams({
+  function handleFilterFormChange({ countryCode, continentCode }: CountryFilterParams) {
+    updateFormFilterState({
       countryCode,
       continentCode,
     })
@@ -23,7 +18,7 @@ export const Countries = () => {
   return (
     <div className="countries">
       <div className="container">
-        <FilterBar onSubmit={handleApplyFilter} />
+        <FilterBar form={formFilterState} onChange={handleFilterFormChange} />
         <CountryList filter={countryFilter} />
       </div>
     </div>

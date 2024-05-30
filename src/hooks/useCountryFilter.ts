@@ -1,21 +1,22 @@
 import { useMemo, useState } from 'react'
 import { CountryFilterParams } from '../types.ts'
-import { mapFilterParamsToCountryFilter } from '../utils.ts'
+import { mapToCountryFilter } from '../utils.ts'
 
 export const useCountryFilter = () => {
-  const [params, setParams] = useState<CountryFilterParams>({
+  const [formFilterState, setFormFilterState] = useState<CountryFilterParams>({
     countryCode: '',
     continentCode: '',
   })
 
-  const countryFilter = useMemo(() => mapFilterParamsToCountryFilter(params), [params])
+  const countryFilter = useMemo(() => mapToCountryFilter(formFilterState), [formFilterState])
 
-  const updateFilterParams = (newParams: CountryFilterParams) => {
-    setParams(newParams)
+  const updateFormFilterState = (filter: CountryFilterParams) => {
+    setFormFilterState(filter)
   }
 
   return {
+    formFilterState,
     countryFilter,
-    updateFilterParams,
+    updateFormFilterState,
   }
 }
