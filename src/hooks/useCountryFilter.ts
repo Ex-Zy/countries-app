@@ -10,13 +10,13 @@ export const useCountryFilter = () => {
 
   const countryFilter = useMemo(() => mapToCountryFilter(formFilterState), [formFilterState])
 
-  const updateFormFilterState = (filter: CountryFilterParams) => {
+  function handleFormFilterChange(filter: CountryFilterParams) {
     setFormFilterState(filter)
   }
 
   return {
     formFilterState,
     countryFilter,
-    updateFormFilterState,
+    handleFormFilterChange,
   }
 }
