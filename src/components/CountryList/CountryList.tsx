@@ -30,11 +30,11 @@ export const CountryList: React.FC<Props> = ({ filter }: Props) => {
   })
 
   if (loading) {
-    return <div>Loading...</div>
+    return <div className="country-list-loading">Loading...</div>
   }
 
   if (error) {
-    return <div>Error: {error.message}</div>
+    return <div className="country-list-error">Error: {error.message}</div>
   }
 
   return (

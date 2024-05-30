@@ -54,3 +54,13 @@
     margin: 0 0 0 6px;
   }
 }
+
+.country-list-loading,
+.country-list-error {
+  height: 800px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font: 800 32px/1.4 'Nunito Sans',
+  sans-serif;
+}
