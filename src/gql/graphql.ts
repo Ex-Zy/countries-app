@@ -133,6 +133,28 @@ export type Subdivision = {
   name: Scalars['String']['output'];
 };
 
+export type GetCountryDetailsQueryVariables = Exact<{
+  code: Scalars['ID']['input'];
+}>;
+
+
+export type GetCountryDetailsQuery = {
+  __typename?: 'Query',
+  country?: {
+    __typename?: 'Country',
+    awsRegion: string,
+    name: string,
+    native: string,
+    code: string,
+    capital?: string | null,
+    currency?: string | null,
+    phone: string,
+    languages: Array<{ __typename?: 'Language', name: string }>,
+    continent: { __typename?: 'Continent', name: string },
+    subdivisions: Array<{ __typename?: 'Subdivision', name: string }>
+  } | null
+};
+
 export type GetCountriesQueryVariables = Exact<{
   filter?: InputMaybe<CountryFilterInput>;
 }>;
@@ -167,6 +189,63 @@ export type GetFilterBarContinentsQuery = {
 };
 
 
+export const GetCountryDetailsDocument = {
+  "kind": "Document", "definitions": [{
+    "kind": "OperationDefinition",
+    "operation": "query",
+    "name": {"kind": "Name", "value": "GetCountryDetails"},
+    "variableDefinitions": [{
+      "kind": "VariableDefinition",
+      "variable": {"kind": "Variable", "name": {"kind": "Name", "value": "code"}},
+      "type": {"kind": "NonNullType", "type": {"kind": "NamedType", "name": {"kind": "Name", "value": "ID"}}}
+    }],
+    "selectionSet": {
+      "kind": "SelectionSet", "selections": [{
+        "kind": "Field",
+        "name": {"kind": "Name", "value": "country"},
+        "arguments": [{
+          "kind": "Argument",
+          "name": {"kind": "Name", "value": "code"},
+          "value": {"kind": "Variable", "name": {"kind": "Name", "value": "code"}}
+        }],
+        "selectionSet": {
+          "kind": "SelectionSet",
+          "selections": [{"kind": "Field", "name": {"kind": "Name", "value": "awsRegion"}}, {
+            "kind": "Field",
+            "name": {"kind": "Name", "value": "name"}
+          }, {"kind": "Field", "name": {"kind": "Name", "value": "native"}}, {
+            "kind": "Field",
+            "name": {"kind": "Name", "value": "code"}
+          }, {"kind": "Field", "name": {"kind": "Name", "value": "capital"}}, {
+            "kind": "Field",
+            "name": {"kind": "Name", "value": "currency"}
+          }, {
+            "kind": "Field",
+            "name": {"kind": "Name", "value": "languages"},
+            "selectionSet": {
+              "kind": "SelectionSet",
+              "selections": [{"kind": "Field", "name": {"kind": "Name", "value": "name"}}]
+            }
+          }, {
+            "kind": "Field",
+            "name": {"kind": "Name", "value": "continent"},
+            "selectionSet": {
+              "kind": "SelectionSet",
+              "selections": [{"kind": "Field", "name": {"kind": "Name", "value": "name"}}]
+            }
+          }, {
+            "kind": "Field",
+            "name": {"kind": "Name", "value": "subdivisions"},
+            "selectionSet": {
+              "kind": "SelectionSet",
+              "selections": [{"kind": "Field", "name": {"kind": "Name", "value": "name"}}]
+            }
+          }, {"kind": "Field", "name": {"kind": "Name", "value": "phone"}}]
+        }
+      }]
+    }
+  }]
+} as unknown as DocumentNode<GetCountryDetailsQuery, GetCountryDetailsQueryVariables>;
 export const GetCountriesDocument = {
   "kind": "Document", "definitions": [{
     "kind": "OperationDefinition",

@@ -1,5 +1,11 @@
 @import 'normalize.css';
 
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
 body {
   background: #fafafa;
 
@@ -18,4 +24,24 @@ body {
   max-width: calc(1280px + 48px * 2);
   margin: 0 auto;
   padding: 0 48px;
+}
+
+.btn-back {
+  display: inline-flex;
+  gap: 10px;
+  align-items: center;
+  justify-content: center;
+  height: 40px;
+  width: 136px;
+  text-decoration: none;
+  font-family: 'Nunito Sans', sans-serif;
+  font-weight: 300;
+  font-size: 16px;
+  line-height: 125%;
+  color: #111517;
+  transition: all 0.3s;
+
+  &:hover {
+    opacity: 0.4;
+  }
 }

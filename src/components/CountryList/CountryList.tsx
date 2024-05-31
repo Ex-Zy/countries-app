@@ -5,6 +5,7 @@ import { Country, CountryFilterInput } from '../../gql/graphql.ts'
 import React from 'react'
 import { Link } from 'react-router-dom'
 import { CountryCard } from '../CountryCard/CountryCard.tsx'
+import { CountryListSkeleton } from '../CountryListSkeleton/CountryListSkeleton.tsx'
 
 const GET_COUNTRIES = gql(`
   query GetCountries($filter: CountryFilterInput) {
@@ -32,7 +33,7 @@ export const CountryList: React.FC<Props> = ({ filter }: Props) => {
   })
 
   if (loading) {
-    return <div className="country-list-loading">Loading...</div>
+    return <CountryListSkeleton />
   }
 
   if (error) {

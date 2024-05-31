@@ -1,0 +1,44 @@
+.country-details-card {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+
+  &__title {
+    font-family: 'Nunito Sans', sans-serif;
+    font-weight: 800;
+    font-size: 32px;
+    color: #111517;
+    margin: 0;
+  }
+
+  &__media {
+    position: relative;
+    border-radius: 10px;
+    box-shadow: 0 0 14px 4px rgba(0, 0, 0, 0.03);
+    overflow: hidden;
+
+    img {
+      width: 100%;
+      height: auto;
+      display: block;
+    }
+  }
+
+  &__info {
+    padding: 2vw 0 2vw 5vw;
+  }
+
+  &__list {
+    padding: 0;
+    margin: 14px 0 0;
+    list-style-type: none;
+    column-count: 2;
+  }
+
+  &__item {
+    line-height: 2;
+
+    strong {
+      margin: 0 4px 0 0;
+    }
+  }
+}
