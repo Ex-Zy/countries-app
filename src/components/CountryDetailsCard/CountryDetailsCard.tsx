@@ -1,12 +1,15 @@
 import './CountryDetailsCard.scss'
 import { Country } from '../../gql/graphql.ts'
 import React from 'react'
+import { truncateSubdivision } from '../../utils.ts'
 
 interface Props {
   country: Country
 }
 
 export const CountryDetailsCard: React.FC<Props> = ({ country }: Props) => {
+  const subdivisions = truncateSubdivision(country.subdivisions)
+
   return (
     <div className="country-details-card">
       <div className="country-details-card__media">
@@ -42,22 +45,11 @@ export const CountryDetailsCard: React.FC<Props> = ({ country }: Props) => {
           </li>
           <li className="country-details-card__item">
             <strong>Languages:</strong>
-            {country.languages.map((language) => (
-              <span key={language.name}>{language.name}</span>
-            ))}
+            {country.languages.map((lang) => lang.name).join(', ')}
           </li>
           <li className="country-details-card__item">
             <strong>Subdivisions:</strong>
-            {country.subdivisions.length ? (
-              <span>
-                {country.subdivisions
-                  .map((s) => s.name)
-                  .toString()
-                  .split(', ')}
-              </span>
-            ) : (
-              'No subdivisions'
-            )}
+            {country.subdivisions.length ? <span>{subdivisions}</span> : 'No subdivisions'}
           </li>
         </ul>
       </div>

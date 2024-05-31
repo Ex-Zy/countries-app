@@ -5,7 +5,6 @@ import { CountryDetailsCard } from '../CountryDetailsCard/CountryDetailsCard.tsx
 import { Country } from '../../gql/graphql.ts'
 
 import { useParams } from 'react-router'
-import { AppHeader } from '../AppHeader/AppHeader.tsx'
 import { Link } from 'react-router-dom'
 import { ArrowLeft } from '../ArrowLeft.tsx'
 
@@ -54,7 +53,6 @@ export const CountryDetails = () => {
 
   return (
     <>
-      <AppHeader />
       <div className="country-details">
         <div className="country-details__in container">
           <Link to="/" className="btn-back">
