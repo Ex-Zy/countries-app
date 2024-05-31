@@ -7,6 +7,7 @@ import { Country } from '../../gql/graphql.ts'
 import { useParams } from 'react-router'
 import { Link } from 'react-router-dom'
 import { ArrowLeft } from '../ArrowLeft.tsx'
+import { CountryDetailsCardSkeleton } from '../CountryDetailsCardSkeleton/CountryDetailsCardSkeleton.tsx'
 
 const GET_COUNTRY_DETAILS = gql(`
   query GetCountryDetails($code: ID!) {
@@ -43,14 +44,6 @@ export const CountryDetails = () => {
     },
   })
 
-  if (loading) {
-    return <div>Loading...</div>
-  }
-
-  if (error) {
-    return <div>Error: {error.message}</div>
-  }
-
   return (
     <>
       <div className="country-details">
@@ -59,7 +52,7 @@ export const CountryDetails = () => {
             <ArrowLeft />
             Back
           </Link>
-          <CountryDetailsCard country={data.country as Country} />
+          {loading || error ? <CountryDetailsCardSkeleton /> : <CountryDetailsCard country={data.country as Country} />}
         </div>
       </div>
     </>
