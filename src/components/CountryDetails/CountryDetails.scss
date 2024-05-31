@@ -1,9 +1,17 @@
 .country-details {
   padding-block: 80px;
 
+  @media screen and (max-width: 1024px) {
+    padding-block: 40px;
+  }
+
   &__in {
     display: flex;
     flex-direction: column;
     gap: 80px;
+
+    @media screen and (max-width: 1024px) {
+      gap: 40px;
+    }
   }
 }
