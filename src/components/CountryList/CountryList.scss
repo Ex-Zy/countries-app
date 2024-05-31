@@ -4,55 +4,9 @@
   gap: 3vw;
   list-style-type: none;
   padding: 0;
-}
 
-.country-card {
-  background: #fff;
-  border-radius: 5px;
-  box-shadow: 0 0 7px 2px rgba(0, 0, 0, 0.03);
-  min-height: 336px;
-  max-width: 420px;
-
-  &__media {
-    padding: 0;
-    margin: 0;
-    position: relative;
-
-    img {
-      width: 100%;
-      height: auto;
-      display: block;
-    }
-  }
-
-  &__content {
-    padding: 24px;
-  }
-
-  &__title {
-    font: 800 18px/1.4 'Nunito Sans',
-    sans-serif;
-    color: #111517;
-    margin: 0;
-  }
-}
-
-.dl-country {
-  display: flex;
-  font: 300 14px/1.4 'Nunito Sans',
-  sans-serif;
-  margin: 8px 0 0;
-
-  &:first-of-type {
-    margin: 16px 0 0;
-  }
-
-  &__dt {
-    font-weight: 600;
-  }
-
-  &__dd {
-    margin: 0 0 0 6px;
+  &__link {
+    text-decoration: none;
   }
 }
 

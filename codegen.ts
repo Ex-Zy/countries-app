@@ -11,6 +11,7 @@ const config: CodegenConfig = {
       presetConfig: {
         gqlTagName: 'gql',
       },
+      hooks: { afterAllFileWrite: ['prettier --write'] },
     },
     './src/gql/schema.graphql': {
       plugins: ['schema-ast'],

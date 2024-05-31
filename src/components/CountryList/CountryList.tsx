@@ -1,8 +1,10 @@
 import './CountryList.scss'
 import { useQuery } from '@apollo/client'
 import { gql } from '../../gql'
-import { CountryFilterInput } from '../../gql/graphql.ts'
+import { Country, CountryFilterInput } from '../../gql/graphql.ts'
 import React from 'react'
+import { Link } from 'react-router-dom'
+import { CountryCard } from '../CountryCard/CountryCard.tsx'
 
 const GET_COUNTRIES = gql(`
   query GetCountries($filter: CountryFilterInput) {
@@ -47,30 +49,9 @@ export const CountryList: React.FC<Props> = ({ filter }: Props) => {
         {data?.countries.map((country) => {
           return (
             <li key={country.name} className="country-list__item">
-              <div className="country-card">
-                <figure className="country-card__media">
-                  <img
-                    loading="lazy"
-                    src={`https://purecatamphetamine.github.io/country-flag-icons/3x2/${country.code}.svg`}
-                    alt={country.name}
-                  />
-                </figure>
-                <article className="country-card__content">
-                  <h2 className="country-card__title">{country.name}</h2>
-                  <dl className="dl-country">
-                    <dt className="dl-country__dt">Code:</dt>
-                    <dd className="dl-country__dd">{country.code}</dd>
-                  </dl>
-                  <dl className="dl-country">
-                    <dt className="dl-country__dt">Region:</dt>
-                    <dd className="dl-country__dd">{country.continent.name}</dd>
-                  </dl>
-                  <dl className="dl-country">
-                    <dt className="dl-country__dt">Capital:</dt>
-                    <dd className="dl-country__dd">{country.capital}</dd>
-                  </dl>
-                </article>
-              </div>
+              <Link to={`/countries/${country.code.toLowerCase()}`} className="country-list__link">
+                <CountryCard country={country as Country} />
+              </Link>
             </li>
           )
         })}
