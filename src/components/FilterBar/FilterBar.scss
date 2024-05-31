@@ -1,5 +1,7 @@
 .filter-bar {
   display: flex;
+  flex-wrap: wrap;
+  gap: 40px;
   justify-content: space-between;
   align-items: center;
 }

@@ -4,6 +4,7 @@
   gap: 3vw;
   list-style-type: none;
   padding: 0;
+  margin: 48px 0 0;
 
   &__link {
     text-decoration: none;
@@ -17,6 +18,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  font: 800 32px/1.4 'Nunito Sans',
-  sans-serif;
+  font:
+    800 32px/1.4 'Nunito Sans',
+    sans-serif;
 }
