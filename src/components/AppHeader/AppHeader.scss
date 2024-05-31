@@ -1,0 +1,22 @@
+.app-header {
+  background: #fff;
+  box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.06);
+  position: sticky;
+  top: 0;
+  z-index: 5;
+
+  &__in {
+    height: 80px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  &__title {
+    font:
+      800 24px/1.4 'Nunito Sans',
+      sans-serif;
+    color: #111517;
+    margin: 0;
+  }
+}
