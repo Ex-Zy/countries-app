@@ -1,11 +1,12 @@
 import './App.scss'
 
-import { Countries } from '../Countries/Countries.tsx'
+import { RouterProvider } from 'react-router-dom'
+import { router } from '../../router'
 
 function App() {
   return (
     <>
-      <Countries />
+      <RouterProvider router={router} />
     </>
   )
 }

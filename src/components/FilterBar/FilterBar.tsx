@@ -45,7 +45,7 @@ export const FilterBar: React.FC<Props> = ({ form, onChange }: Props) => {
           onChange({ ...form, countryCode: value?.code ?? '' })
         }}
       />
-      <FormControl sx={{ m: 1, minWidth: 350 }} size="medium">
+      <FormControl sx={{ width: 350 }} size="medium">
         <InputLabel id="demo-simple-select-label">Filter by Region</InputLabel>
         <Select
           labelId="demo-simple-select-label"
